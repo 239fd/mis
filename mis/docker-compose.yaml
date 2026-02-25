@@ -22,7 +22,7 @@ services:
     build: .
     container_name: mis-app
     ports:
-      - "8080:8080"
+      - "8085:8085"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mis_db
       SPRING_DATASOURCE_USERNAME: postgres
