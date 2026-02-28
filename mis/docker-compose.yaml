@@ -17,6 +17,8 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+    networks:
+      - mis-network
 
   app:
     build: .
@@ -31,6 +33,26 @@ services:
       postgres:
         condition: service_healthy
     restart: unless-stopped
+    networks:
+      - mis-network
+
+  client:
+    build:
+      context: ../clientmis
+      dockerfile: Dockerfile
+    container_name: mis-client
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    restart: unless-stopped
+    networks:
+      - mis-network
 
 volumes:
   postgres_data:
+
+networks:
+  mis-network:
+    driver: bridge
+
