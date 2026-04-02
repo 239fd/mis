@@ -101,7 +101,7 @@ export const SpecialtiesPage = () => {
       setDeleteDialogOpen(false);
       loadSpecialties();
     } catch (error) {
-      showError('Ошибка при удалении');
+      showError(getErrorMessage(error, 'Ошибка при удалении специальности'));
     }
   };
 

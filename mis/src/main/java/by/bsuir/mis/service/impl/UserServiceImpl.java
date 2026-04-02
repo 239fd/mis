@@ -1,7 +1,9 @@
 package by.bsuir.mis.service.impl;
 
 import by.bsuir.mis.entity.User;
+import by.bsuir.mis.exception.BadRequestException;
 import by.bsuir.mis.exception.ResourceNotFoundException;
+import by.bsuir.mis.repository.AppointmentRepository;
 import by.bsuir.mis.repository.EmployeeRepository;
 import by.bsuir.mis.repository.UserPatientRepository;
 import by.bsuir.mis.repository.UserRepository;
@@ -23,6 +25,7 @@ public class UserServiceImpl implements UserService {
     private final EmployeeRepository employeeRepository;
     private final EmployeeService employeeService;
     private final UserPatientRepository userPatientRepository;
+    private final AppointmentRepository appointmentRepository;
 
     @Override
     @Transactional
@@ -66,11 +69,25 @@ public class UserServiceImpl implements UserService {
             throw new ResourceNotFoundException("User", "id", id);
         }
 
-        employeeRepository.findByUser_Id(id).ifPresent(employee -> employeeService.deleteById(employee.getId()));
+        // Проверяем, есть ли у связанного сотрудника записи на приём
+        employeeRepository.findByUser_Id(id).ifPresent(employee -> {
+            if (appointmentRepository.existsByEmployee_Id(employee.getId())) {
+                throw new BadRequestException(
+                        "Cannot delete user: the associated employee has appointments. Deactivate user instead.");
+            }
+            employeeService.deleteById(employee.getId());
+        });
 
-        userPatientRepository
-                .findByUser_Id(id)
-                .forEach(userPatient -> userPatientRepository.deleteById(userPatient.getId()));
+        // Проверяем, есть ли у связанных пациентов записи на приём
+        var userPatients = userPatientRepository.findByUser_Id(id);
+        for (var up : userPatients) {
+            if (appointmentRepository.existsByPatient_Id(up.getPatient().getId())) {
+                throw new BadRequestException(
+                        "Cannot delete user: linked patients have appointments. Deactivate user instead.");
+            }
+        }
+
+        userPatients.forEach(userPatient -> userPatientRepository.deleteById(userPatient.getId()));
 
         userRepository.deleteById(id);
     }

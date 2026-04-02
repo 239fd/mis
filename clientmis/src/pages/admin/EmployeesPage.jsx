@@ -182,7 +182,7 @@ export const EmployeesPage = () => {
       setDeleteDialogOpen(false);
       loadData();
     } catch (error) {
-      showError('Ошибка при удалении');
+      showError(getErrorMessage(error, 'Ошибка при удалении сотрудника'));
     }
   };
 

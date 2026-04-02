@@ -8,6 +8,7 @@ import by.bsuir.mis.entity.*;
 import by.bsuir.mis.entity.enums.AppointmentStatus;
 import by.bsuir.mis.exception.ResourceNotFoundException;
 import by.bsuir.mis.repository.AppointmentRepository;
+import by.bsuir.mis.repository.AppointmentStatusHistoryRepository;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,6 +26,9 @@ class AppointmentServiceImplTest {
 
     @Mock
     private AppointmentRepository appointmentRepository;
+
+    @Mock
+    private AppointmentStatusHistoryRepository appointmentStatusHistoryRepository;
 
     @InjectMocks
     private AppointmentServiceImpl appointmentService;
@@ -169,10 +173,32 @@ class AppointmentServiceImplTest {
     @Test
     void deleteById_WhenExists_ShouldDelete() {
         when(appointmentRepository.existsById(appointmentId)).thenReturn(true);
+        when(appointmentStatusHistoryRepository.findByAppointment_Id(appointmentId)).thenReturn(List.of());
         doNothing().when(appointmentRepository).deleteById(appointmentId);
 
         appointmentService.deleteById(appointmentId);
 
+        verify(appointmentStatusHistoryRepository, times(1)).findByAppointment_Id(appointmentId);
+        verify(appointmentRepository, times(1)).deleteById(appointmentId);
+    }
+
+    @Test
+    void deleteById_WhenExistsWithHistory_ShouldDeleteHistoryFirst() {
+        UUID historyId = UUID.randomUUID();
+        AppointmentStatusHistory history = AppointmentStatusHistory.builder()
+                .id(historyId)
+                .appointment(appointment)
+                .oldStatus(AppointmentStatus.WAITING)
+                .newStatus(AppointmentStatus.CANCELLED)
+                .build();
+        when(appointmentRepository.existsById(appointmentId)).thenReturn(true);
+        when(appointmentStatusHistoryRepository.findByAppointment_Id(appointmentId)).thenReturn(List.of(history));
+        doNothing().when(appointmentStatusHistoryRepository).deleteById(historyId);
+        doNothing().when(appointmentRepository).deleteById(appointmentId);
+
+        appointmentService.deleteById(appointmentId);
+
+        verify(appointmentStatusHistoryRepository, times(1)).deleteById(historyId);
         verify(appointmentRepository, times(1)).deleteById(appointmentId);
     }
 

@@ -45,11 +45,13 @@ const menuItems = {
     { text: 'Мои пациенты', icon: <People />, path: '/patient/my-patients' },
     { text: 'Запись на приём', icon: <PersonAdd />, path: '/patient/book' },
     { text: 'Мои записи', icon: <Assignment />, path: '/patient/appointments' },
+    { text: 'Аналитика', icon: <Analytics />, path: '/patient/analytics' },
   ],
   DOCTOR: [
     { text: 'Главная', icon: <Home />, path: '/doctor/home' },
     { text: 'Моё расписание', icon: <CalendarMonth />, path: '/doctor/schedule' },
     { text: 'Записи на приём', icon: <EventNote />, path: '/doctor/appointments' },
+    { text: 'Аналитика', icon: <Analytics />, path: '/doctor/analytics' },
   ],
   RECEPTIONIST: [
     { text: 'Панель управления', icon: <Dashboard />, path: '/receptionist/dashboard' },

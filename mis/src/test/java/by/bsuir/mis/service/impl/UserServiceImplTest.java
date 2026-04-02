@@ -5,8 +5,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 import by.bsuir.mis.entity.Employee;
+import by.bsuir.mis.entity.Patient;
 import by.bsuir.mis.entity.User;
 import by.bsuir.mis.entity.UserPatient;
+import by.bsuir.mis.exception.BadRequestException;
 import by.bsuir.mis.exception.ResourceNotFoundException;
 import by.bsuir.mis.repository.*;
 import by.bsuir.mis.service.EmployeeService;
@@ -34,6 +36,9 @@ class UserServiceImplTest {
 
     @Mock
     private UserPatientRepository userPatientRepository;
+
+    @Mock
+    private AppointmentRepository appointmentRepository;
 
     @InjectMocks
     private UserServiceImpl userService;
@@ -155,6 +160,7 @@ class UserServiceImplTest {
         Employee employee = Employee.builder().id(employeeId).build();
         when(userRepository.existsById(userId)).thenReturn(true);
         when(employeeRepository.findByUser_Id(userId)).thenReturn(Optional.of(employee));
+        when(appointmentRepository.existsByEmployee_Id(employeeId)).thenReturn(false);
         when(userPatientRepository.findByUser_Id(userId)).thenReturn(List.of());
         doNothing().when(employeeService).deleteById(employeeId);
         doNothing().when(userRepository).deleteById(userId);
@@ -166,18 +172,50 @@ class UserServiceImplTest {
     }
 
     @Test
+    void deleteById_WithEmployeeHavingAppointments_ShouldThrowBadRequestException() {
+        UUID employeeId = UUID.randomUUID();
+        Employee employee = Employee.builder().id(employeeId).build();
+        when(userRepository.existsById(userId)).thenReturn(true);
+        when(employeeRepository.findByUser_Id(userId)).thenReturn(Optional.of(employee));
+        when(appointmentRepository.existsByEmployee_Id(employeeId)).thenReturn(true);
+
+        assertThrows(BadRequestException.class, () -> userService.deleteById(userId));
+
+        verify(userRepository, never()).deleteById(any());
+    }
+
+    @Test
     void deleteById_WithUserPatients_ShouldDeleteLinks() {
         UUID userPatientId = UUID.randomUUID();
-        UserPatient userPatient = UserPatient.builder().id(userPatientId).build();
+        UUID patientId = UUID.randomUUID();
+        Patient patient = Patient.builder().id(patientId).build();
+        UserPatient userPatient = UserPatient.builder().id(userPatientId).patient(patient).build();
         when(userRepository.existsById(userId)).thenReturn(true);
         when(employeeRepository.findByUser_Id(userId)).thenReturn(Optional.empty());
         when(userPatientRepository.findByUser_Id(userId)).thenReturn(List.of(userPatient));
+        when(appointmentRepository.existsByPatient_Id(patientId)).thenReturn(false);
         doNothing().when(userPatientRepository).deleteById(userPatientId);
         doNothing().when(userRepository).deleteById(userId);
 
         userService.deleteById(userId);
 
         verify(userPatientRepository, times(1)).deleteById(userPatientId);
+    }
+
+    @Test
+    void deleteById_WithUserPatientsHavingAppointments_ShouldThrowBadRequestException() {
+        UUID userPatientId = UUID.randomUUID();
+        UUID patientId = UUID.randomUUID();
+        Patient patient = Patient.builder().id(patientId).build();
+        UserPatient userPatient = UserPatient.builder().id(userPatientId).patient(patient).build();
+        when(userRepository.existsById(userId)).thenReturn(true);
+        when(employeeRepository.findByUser_Id(userId)).thenReturn(Optional.empty());
+        when(userPatientRepository.findByUser_Id(userId)).thenReturn(List.of(userPatient));
+        when(appointmentRepository.existsByPatient_Id(patientId)).thenReturn(true);
+
+        assertThrows(BadRequestException.class, () -> userService.deleteById(userId));
+
+        verify(userRepository, never()).deleteById(any());
     }
 
     @Test

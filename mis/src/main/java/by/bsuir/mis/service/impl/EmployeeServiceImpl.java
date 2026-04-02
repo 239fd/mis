@@ -1,6 +1,7 @@
 package by.bsuir.mis.service.impl;
 
 import by.bsuir.mis.entity.Employee;
+import by.bsuir.mis.exception.BadRequestException;
 import by.bsuir.mis.exception.ResourceNotFoundException;
 import by.bsuir.mis.repository.*;
 import by.bsuir.mis.service.EmployeeService;
@@ -21,7 +22,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final DoctorScheduleRepository doctorScheduleRepository;
     private final ScheduleExceptionRepository scheduleExceptionRepository;
     private final AppointmentRepository appointmentRepository;
-    private final AppointmentStatusHistoryRepository appointmentStatusHistoryRepository;
 
     @Override
     @Transactional
@@ -70,12 +70,11 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new ResourceNotFoundException("Employee", "id", id);
         }
 
-        appointmentRepository.findByEmployee_Id(id).forEach(appointment -> {
-            appointmentStatusHistoryRepository
-                    .findByAppointment_Id(appointment.getId())
-                    .forEach(history -> appointmentStatusHistoryRepository.deleteById(history.getId()));
-            appointmentRepository.deleteById(appointment.getId());
-        });
+        // Запрещаем удаление если есть записи на приём
+        if (appointmentRepository.existsByEmployee_Id(id)) {
+            throw new BadRequestException(
+                    "Cannot delete employee: there are appointments associated with this employee. Deactivate instead.");
+        }
 
         doctorServiceRepository.findByEmployee_Id(id).forEach(ds -> doctorServiceRepository.deleteById(ds.getId()));
 

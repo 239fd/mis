@@ -24,12 +24,14 @@ import {PatientDetailPage} from '../pages/patient/PatientDetailPage';
 import {BookAppointmentPage} from '../pages/patient/BookAppointmentPage';
 import {PatientAppointmentsPage} from '../pages/patient/AppointmentsPage';
 import {AppointmentDetailPage} from '../pages/patient/AppointmentDetailPage';
+import {PatientAnalyticsPage} from '../pages/patient/AnalyticsPage';
 
 // Doctor pages
 import {DoctorHome} from '../pages/doctor/HomePage';
 import {DoctorSchedulePage} from '../pages/doctor/SchedulePage';
 import {DoctorAppointmentsPage} from '../pages/doctor/AppointmentsPage';
 import {DoctorAppointmentDetailPage} from '../pages/doctor/AppointmentDetailPage';
+import {DoctorAnalyticsPage} from '../pages/doctor/AnalyticsPage';
 
 // Receptionist pages
 import {ReceptionistDashboard} from '../pages/receptionist/DashboardPage';
@@ -175,6 +177,14 @@ export const AppRoutes = () => {
                         </RoleRoute>
                     }
                 />
+                <Route
+                    path="/patient/analytics"
+                    element={
+                        <RoleRoute allowedRoles={['PATIENT']}>
+                            <PatientAnalyticsPage/>
+                        </RoleRoute>
+                    }
+                />
 
                 <Route
                     path="/doctor/home"
@@ -205,6 +215,14 @@ export const AppRoutes = () => {
                     element={
                         <RoleRoute allowedRoles={['DOCTOR']}>
                             <DoctorAppointmentDetailPage/>
+                        </RoleRoute>
+                    }
+                />
+                <Route
+                    path="/doctor/analytics"
+                    element={
+                        <RoleRoute allowedRoles={['DOCTOR']}>
+                            <DoctorAnalyticsPage/>
                         </RoleRoute>
                     }
                 />

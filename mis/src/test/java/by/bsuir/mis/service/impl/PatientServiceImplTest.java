@@ -12,6 +12,7 @@ import by.bsuir.mis.entity.enums.Relationship;
 import by.bsuir.mis.exception.BadRequestException;
 import by.bsuir.mis.exception.ResourceAlreadyExistsException;
 import by.bsuir.mis.exception.ResourceNotFoundException;
+import by.bsuir.mis.repository.AppointmentRepository;
 import by.bsuir.mis.repository.PatientRepository;
 import by.bsuir.mis.repository.UserPatientRepository;
 import java.time.LocalDate;
@@ -33,6 +34,9 @@ class PatientServiceImplTest {
 
     @Mock
     private UserPatientRepository userPatientRepository;
+
+    @Mock
+    private AppointmentRepository appointmentRepository;
 
     @InjectMocks
     private PatientServiceImpl patientService;
@@ -180,6 +184,8 @@ class PatientServiceImplTest {
     @Test
     void deleteById_WhenExists_ShouldDelete() {
         when(patientRepository.existsById(patientId)).thenReturn(true);
+        when(appointmentRepository.existsByPatient_Id(patientId)).thenReturn(false);
+        when(userPatientRepository.findByPatient_Id(patientId)).thenReturn(List.of());
         doNothing().when(patientRepository).deleteById(patientId);
 
         patientService.deleteById(patientId);
@@ -192,6 +198,16 @@ class PatientServiceImplTest {
         when(patientRepository.existsById(patientId)).thenReturn(false);
 
         assertThrows(ResourceNotFoundException.class, () -> patientService.deleteById(patientId));
+    }
+
+    @Test
+    void deleteById_WithAppointments_ShouldThrowBadRequestException() {
+        when(patientRepository.existsById(patientId)).thenReturn(true);
+        when(appointmentRepository.existsByPatient_Id(patientId)).thenReturn(true);
+
+        assertThrows(BadRequestException.class, () -> patientService.deleteById(patientId));
+
+        verify(patientRepository, never()).deleteById(any());
     }
 
     @Test

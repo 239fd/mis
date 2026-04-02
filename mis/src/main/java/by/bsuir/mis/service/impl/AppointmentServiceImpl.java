@@ -4,6 +4,7 @@ import by.bsuir.mis.entity.Appointment;
 import by.bsuir.mis.entity.enums.AppointmentStatus;
 import by.bsuir.mis.exception.ResourceNotFoundException;
 import by.bsuir.mis.repository.AppointmentRepository;
+import by.bsuir.mis.repository.AppointmentStatusHistoryRepository;
 import by.bsuir.mis.service.AppointmentService;
 import java.time.LocalDate;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class AppointmentServiceImpl implements AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
+    private final AppointmentStatusHistoryRepository appointmentStatusHistoryRepository;
 
     @Override
     @Transactional
@@ -76,6 +78,11 @@ public class AppointmentServiceImpl implements AppointmentService {
         if (!appointmentRepository.existsById(id)) {
             throw new ResourceNotFoundException("Appointment", "id", id);
         }
+
+        // Удаляем историю статусов перед удалением записи
+        appointmentStatusHistoryRepository.findByAppointment_Id(id)
+                .forEach(history -> appointmentStatusHistoryRepository.deleteById(history.getId()));
+
         appointmentRepository.deleteById(id);
     }
 

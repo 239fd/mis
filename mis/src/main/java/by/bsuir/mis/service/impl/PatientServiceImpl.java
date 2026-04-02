@@ -7,6 +7,7 @@ import by.bsuir.mis.entity.enums.Relationship;
 import by.bsuir.mis.exception.BadRequestException;
 import by.bsuir.mis.exception.ResourceAlreadyExistsException;
 import by.bsuir.mis.exception.ResourceNotFoundException;
+import by.bsuir.mis.repository.AppointmentRepository;
 import by.bsuir.mis.repository.PatientRepository;
 import by.bsuir.mis.repository.UserPatientRepository;
 import by.bsuir.mis.service.PatientService;
@@ -26,6 +27,7 @@ public class PatientServiceImpl implements PatientService {
 
     private final PatientRepository patientRepository;
     private final UserPatientRepository userPatientRepository;
+    private final AppointmentRepository appointmentRepository;
 
     @Override
     @Transactional
@@ -103,6 +105,17 @@ public class PatientServiceImpl implements PatientService {
         if (!patientRepository.existsById(id)) {
             throw new ResourceNotFoundException("Patient", "id", id);
         }
+
+        // Запрещаем удаление если есть записи на приём
+        if (appointmentRepository.existsByPatient_Id(id)) {
+            throw new BadRequestException(
+                    "Cannot delete patient: there are appointments associated with this patient.");
+        }
+
+        // Удаляем связи пользователь-пациент
+        userPatientRepository.findByPatient_Id(id)
+                .forEach(up -> userPatientRepository.deleteById(up.getId()));
+
         patientRepository.deleteById(id);
     }
 

@@ -19,6 +19,14 @@ public interface AppointmentRepository extends JpaRepository<Appointment, UUID> 
 
     List<Appointment> findByEmployee_Id(UUID employeeId);
 
+    List<Appointment> findByService_Id(UUID serviceId);
+
+    boolean existsByPatient_Id(UUID patientId);
+
+    boolean existsByEmployee_Id(UUID employeeId);
+
+    boolean existsByService_Id(UUID serviceId);
+
     List<Appointment> findByAppointmentDate(LocalDate appointmentDate);
 
     List<Appointment> findByStatus(AppointmentStatus status);

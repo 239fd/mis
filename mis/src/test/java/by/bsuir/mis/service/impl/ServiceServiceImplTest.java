@@ -5,7 +5,11 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 import by.bsuir.mis.entity.Service;
+import by.bsuir.mis.exception.BadRequestException;
 import by.bsuir.mis.exception.ResourceNotFoundException;
+import by.bsuir.mis.repository.AppointmentRepository;
+import by.bsuir.mis.repository.DoctorServiceRepository;
+import by.bsuir.mis.repository.ServiceDurationRepository;
 import by.bsuir.mis.repository.ServiceRepository;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +26,15 @@ class ServiceServiceImplTest {
 
     @Mock
     private ServiceRepository serviceRepository;
+
+    @Mock
+    private ServiceDurationRepository serviceDurationRepository;
+
+    @Mock
+    private DoctorServiceRepository doctorServiceRepository;
+
+    @Mock
+    private AppointmentRepository appointmentRepository;
 
     @InjectMocks
     private ServiceServiceImpl serviceService;
@@ -130,6 +143,9 @@ class ServiceServiceImplTest {
     @Test
     void deleteById_WhenExists_ShouldDelete() {
         when(serviceRepository.existsById(serviceId)).thenReturn(true);
+        when(appointmentRepository.existsByService_Id(serviceId)).thenReturn(false);
+        when(serviceDurationRepository.findByService_Id(serviceId)).thenReturn(List.of());
+        when(doctorServiceRepository.findByService_Id(serviceId)).thenReturn(List.of());
         doNothing().when(serviceRepository).deleteById(serviceId);
 
         serviceService.deleteById(serviceId);
@@ -142,6 +158,16 @@ class ServiceServiceImplTest {
         when(serviceRepository.existsById(serviceId)).thenReturn(false);
 
         assertThrows(ResourceNotFoundException.class, () -> serviceService.deleteById(serviceId));
+    }
+
+    @Test
+    void deleteById_WithAppointments_ShouldThrowBadRequestException() {
+        when(serviceRepository.existsById(serviceId)).thenReturn(true);
+        when(appointmentRepository.existsByService_Id(serviceId)).thenReturn(true);
+
+        assertThrows(BadRequestException.class, () -> serviceService.deleteById(serviceId));
+
+        verify(serviceRepository, never()).deleteById(any());
     }
 
     @Test

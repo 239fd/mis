@@ -5,6 +5,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 import by.bsuir.mis.entity.*;
+import by.bsuir.mis.exception.BadRequestException;
 import by.bsuir.mis.exception.ResourceNotFoundException;
 import by.bsuir.mis.repository.*;
 import java.time.LocalDate;
@@ -36,8 +37,6 @@ class EmployeeServiceImplTest {
     @Mock
     private AppointmentRepository appointmentRepository;
 
-    @Mock
-    private AppointmentStatusHistoryRepository appointmentStatusHistoryRepository;
 
     @InjectMocks
     private EmployeeServiceImpl employeeService;
@@ -158,7 +157,7 @@ class EmployeeServiceImplTest {
     @Test
     void deleteById_WhenExists_ShouldDeleteWithRelatedData() {
         when(employeeRepository.existsById(employeeId)).thenReturn(true);
-        when(appointmentRepository.findByEmployee_Id(employeeId)).thenReturn(List.of());
+        when(appointmentRepository.existsByEmployee_Id(employeeId)).thenReturn(false);
         when(doctorServiceRepository.findByEmployee_Id(employeeId)).thenReturn(List.of());
         when(doctorScheduleRepository.findByEmployee_Id(employeeId)).thenReturn(List.of());
         when(scheduleExceptionRepository.findByEmployee_Id(employeeId)).thenReturn(List.of());
@@ -177,28 +176,13 @@ class EmployeeServiceImplTest {
     }
 
     @Test
-    void deleteById_WithAppointments_ShouldDeleteAppointmentsAndHistory() {
-        UUID appointmentId = UUID.randomUUID();
-        Appointment appointment = Appointment.builder().id(appointmentId).build();
-        UUID historyId = UUID.randomUUID();
-        AppointmentStatusHistory history =
-                AppointmentStatusHistory.builder().id(historyId).build();
-
+    void deleteById_WithAppointments_ShouldThrowBadRequestException() {
         when(employeeRepository.existsById(employeeId)).thenReturn(true);
-        when(appointmentRepository.findByEmployee_Id(employeeId)).thenReturn(List.of(appointment));
-        when(appointmentStatusHistoryRepository.findByAppointment_Id(appointmentId))
-                .thenReturn(List.of(history));
-        when(doctorServiceRepository.findByEmployee_Id(employeeId)).thenReturn(List.of());
-        when(doctorScheduleRepository.findByEmployee_Id(employeeId)).thenReturn(List.of());
-        when(scheduleExceptionRepository.findByEmployee_Id(employeeId)).thenReturn(List.of());
-        doNothing().when(appointmentStatusHistoryRepository).deleteById(historyId);
-        doNothing().when(appointmentRepository).deleteById(appointmentId);
-        doNothing().when(employeeRepository).deleteById(employeeId);
+        when(appointmentRepository.existsByEmployee_Id(employeeId)).thenReturn(true);
 
-        employeeService.deleteById(employeeId);
+        assertThrows(BadRequestException.class, () -> employeeService.deleteById(employeeId));
 
-        verify(appointmentStatusHistoryRepository, times(1)).deleteById(historyId);
-        verify(appointmentRepository, times(1)).deleteById(appointmentId);
+        verify(employeeRepository, never()).deleteById(any());
     }
 
     @Test

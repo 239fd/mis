@@ -5,7 +5,9 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 import by.bsuir.mis.entity.MedicalSpecialty;
+import by.bsuir.mis.exception.BadRequestException;
 import by.bsuir.mis.exception.ResourceNotFoundException;
+import by.bsuir.mis.repository.EmployeeRepository;
 import by.bsuir.mis.repository.MedicalSpecialtyRepository;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +24,9 @@ class MedicalSpecialtyServiceImplTest {
 
     @Mock
     private MedicalSpecialtyRepository medicalSpecialtyRepository;
+
+    @Mock
+    private EmployeeRepository employeeRepository;
 
     @InjectMocks
     private MedicalSpecialtyServiceImpl medicalSpecialtyService;
@@ -119,6 +124,7 @@ class MedicalSpecialtyServiceImplTest {
     @Test
     void deleteById_WhenExists_ShouldDelete() {
         when(medicalSpecialtyRepository.existsById(specialtyId)).thenReturn(true);
+        when(employeeRepository.findBySpecialty_Id(specialtyId)).thenReturn(List.of());
         doNothing().when(medicalSpecialtyRepository).deleteById(specialtyId);
 
         medicalSpecialtyService.deleteById(specialtyId);
@@ -131,6 +137,18 @@ class MedicalSpecialtyServiceImplTest {
         when(medicalSpecialtyRepository.existsById(specialtyId)).thenReturn(false);
 
         assertThrows(ResourceNotFoundException.class, () -> medicalSpecialtyService.deleteById(specialtyId));
+    }
+
+    @Test
+    void deleteById_WithEmployees_ShouldThrowBadRequestException() {
+        when(medicalSpecialtyRepository.existsById(specialtyId)).thenReturn(true);
+        when(employeeRepository.findBySpecialty_Id(specialtyId)).thenReturn(List.of(
+                by.bsuir.mis.entity.Employee.builder().id(UUID.randomUUID()).build()
+        ));
+
+        assertThrows(BadRequestException.class, () -> medicalSpecialtyService.deleteById(specialtyId));
+
+        verify(medicalSpecialtyRepository, never()).deleteById(any());
     }
 
     @Test

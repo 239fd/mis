@@ -131,7 +131,7 @@ export const ServicesPage = () => {
             setDeleteDialogOpen(false);
             loadServices();
         } catch (error) {
-            showError('Ошибка при удалении');
+            showError(getErrorMessage(error, 'Ошибка при удалении услуги'));
         }
     };
 

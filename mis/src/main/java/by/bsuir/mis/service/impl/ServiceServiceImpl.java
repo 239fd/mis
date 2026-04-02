@@ -1,6 +1,10 @@
 package by.bsuir.mis.service.impl;
 
+import by.bsuir.mis.exception.BadRequestException;
 import by.bsuir.mis.exception.ResourceNotFoundException;
+import by.bsuir.mis.repository.AppointmentRepository;
+import by.bsuir.mis.repository.DoctorServiceRepository;
+import by.bsuir.mis.repository.ServiceDurationRepository;
 import by.bsuir.mis.repository.ServiceRepository;
 import by.bsuir.mis.service.ServiceService;
 import java.util.List;
@@ -16,6 +20,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class ServiceServiceImpl implements ServiceService {
 
     private final ServiceRepository serviceRepository;
+    private final ServiceDurationRepository serviceDurationRepository;
+    private final DoctorServiceRepository doctorServiceRepository;
+    private final AppointmentRepository appointmentRepository;
 
     @Override
     @Transactional
@@ -58,6 +65,21 @@ public class ServiceServiceImpl implements ServiceService {
         if (!serviceRepository.existsById(id)) {
             throw new ResourceNotFoundException("Service", "id", id);
         }
+
+        // Запрещаем удаление если есть записи на приём с этой услугой
+        if (appointmentRepository.existsByService_Id(id)) {
+            throw new BadRequestException(
+                    "Cannot delete service: there are appointments associated with this service. Deactivate instead.");
+        }
+
+        // Удаляем связанные нормы длительности
+        serviceDurationRepository.findByService_Id(id)
+                .forEach(sd -> serviceDurationRepository.deleteById(sd.getId()));
+
+        // Удаляем связи врач-услуга
+        doctorServiceRepository.findByService_Id(id)
+                .forEach(ds -> doctorServiceRepository.deleteById(ds.getId()));
+
         serviceRepository.deleteById(id);
     }
 

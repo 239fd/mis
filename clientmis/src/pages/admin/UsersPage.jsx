@@ -183,7 +183,7 @@ export const UsersPage = () => {
       setDeleteDialogOpen(false);
       loadUsers();
     } catch (error) {
-      showError('Ошибка при удалении пользователя');
+      showError(getErrorMessage(error, 'Ошибка при удалении пользователя'));
     }
   };
 

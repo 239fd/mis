@@ -1,7 +1,9 @@
 package by.bsuir.mis.service.impl;
 
 import by.bsuir.mis.entity.MedicalSpecialty;
+import by.bsuir.mis.exception.BadRequestException;
 import by.bsuir.mis.exception.ResourceNotFoundException;
+import by.bsuir.mis.repository.EmployeeRepository;
 import by.bsuir.mis.repository.MedicalSpecialtyRepository;
 import by.bsuir.mis.service.MedicalSpecialtyService;
 import java.util.List;
@@ -17,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MedicalSpecialtyServiceImpl implements MedicalSpecialtyService {
 
     private final MedicalSpecialtyRepository medicalSpecialtyRepository;
+    private final EmployeeRepository employeeRepository;
 
     @Override
     @Transactional
@@ -54,6 +57,13 @@ public class MedicalSpecialtyServiceImpl implements MedicalSpecialtyService {
         if (!medicalSpecialtyRepository.existsById(id)) {
             throw new ResourceNotFoundException("MedicalSpecialty", "id", id);
         }
+
+        // Запрещаем удаление если есть сотрудники с этой специальностью
+        if (!employeeRepository.findBySpecialty_Id(id).isEmpty()) {
+            throw new BadRequestException(
+                    "Cannot delete specialty: there are employees associated with this specialty.");
+        }
+
         medicalSpecialtyRepository.deleteById(id);
     }
 
