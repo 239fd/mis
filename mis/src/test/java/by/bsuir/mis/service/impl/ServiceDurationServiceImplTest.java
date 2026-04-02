@@ -101,11 +101,22 @@ class ServiceDurationServiceImplTest {
     void findActiveByServiceId_ShouldReturnActiveServiceDuration() {
         LocalDate date = LocalDate.now();
         when(serviceDurationRepository.findActiveByServiceIdOnDate(serviceId, date))
-                .thenReturn(Optional.of(serviceDuration));
+                .thenReturn(List.of(serviceDuration));
 
         Optional<ServiceDuration> result = serviceDurationService.findActiveByServiceId(serviceId, date);
 
         assertTrue(result.isPresent());
+    }
+
+    @Test
+    void findActiveByServiceId_WhenEmpty_ShouldReturnEmpty() {
+        LocalDate date = LocalDate.now();
+        when(serviceDurationRepository.findActiveByServiceIdOnDate(serviceId, date))
+                .thenReturn(List.of());
+
+        Optional<ServiceDuration> result = serviceDurationService.findActiveByServiceId(serviceId, date);
+
+        assertFalse(result.isPresent());
     }
 
     @Test

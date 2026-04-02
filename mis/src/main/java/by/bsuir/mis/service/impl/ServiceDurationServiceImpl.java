@@ -42,7 +42,8 @@ public class ServiceDurationServiceImpl implements ServiceDurationService {
 
     @Override
     public Optional<ServiceDuration> findActiveByServiceId(UUID serviceId, LocalDate date) {
-        return serviceDurationRepository.findActiveByServiceIdOnDate(serviceId, date);
+        List<ServiceDuration> active = serviceDurationRepository.findActiveByServiceIdOnDate(serviceId, date);
+        return active.isEmpty() ? Optional.empty() : Optional.of(active.getFirst());
     }
 
     @Override

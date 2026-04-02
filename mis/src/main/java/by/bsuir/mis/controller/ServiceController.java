@@ -14,6 +14,7 @@ import by.bsuir.mis.mapper.ServiceMapper;
 import by.bsuir.mis.service.ServiceDurationService;
 import by.bsuir.mis.service.ServiceService;
 import jakarta.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -140,10 +141,18 @@ public class ServiceController {
         Service service =
                 serviceService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Service", "id", id));
 
+        LocalDate newEffectiveFrom = request.effectiveFrom() != null ? request.effectiveFrom() : LocalDate.now();
+        serviceDurationService.findByServiceId(id).stream()
+                .filter(d -> d.getEffectiveTo() == null || !d.getEffectiveTo().isBefore(newEffectiveFrom))
+                .forEach(d -> {
+                    d.setEffectiveTo(newEffectiveFrom.minusDays(1));
+                    serviceDurationService.update(d);
+                });
+
         ServiceDuration duration = ServiceDuration.builder()
                 .service(service)
                 .durationMin(request.durationMin())
-                .effectiveFrom(request.effectiveFrom())
+                .effectiveFrom(newEffectiveFrom)
                 .effectiveTo(request.effectiveTo())
                 .build();
 

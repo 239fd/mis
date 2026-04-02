@@ -5,7 +5,7 @@ import by.bsuir.mis.entity.Service;
 import by.bsuir.mis.entity.ServiceDuration;
 import by.bsuir.mis.repository.ServiceDurationRepository;
 import java.time.LocalDate;
-import java.util.Optional;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -21,18 +21,19 @@ public class ServiceMapper {
         if (service == null) return null;
 
         LocalDate today = LocalDate.now();
-        Optional<ServiceDuration> durationOpt =
+        List<ServiceDuration> activeDurations =
                 serviceDurationRepository.findActiveByServiceIdOnDate(service.getId(), today);
 
-        Integer currentDuration =
-                durationOpt.map(ServiceDuration::getDurationMin).orElse(null);
+        Integer currentDuration = activeDurations.isEmpty()
+                ? null
+                : activeDurations.getFirst().getDurationMin();
 
         log.debug(
                 "Service '{}' (id={}): date={}, duration found={}, value={}",
                 service.getName(),
                 service.getId(),
                 today,
-                durationOpt.isPresent(),
+                !activeDurations.isEmpty(),
                 currentDuration);
 
         return new ServiceResponse(

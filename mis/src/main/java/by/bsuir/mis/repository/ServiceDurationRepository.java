@@ -3,7 +3,6 @@ package by.bsuir.mis.repository;
 import by.bsuir.mis.entity.ServiceDuration;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,9 +14,11 @@ public interface ServiceDurationRepository extends JpaRepository<ServiceDuration
 
     List<ServiceDuration> findByService_Id(UUID serviceId);
 
-    @Query("SELECT sd FROM ServiceDuration sd WHERE " + "sd.service.id = :serviceId AND "
+    @Query("SELECT sd FROM ServiceDuration sd WHERE "
+            + "sd.service.id = :serviceId AND "
             + "sd.effectiveFrom <= :date AND "
-            + "(sd.effectiveTo IS NULL OR sd.effectiveTo >= :date)")
-    Optional<ServiceDuration> findActiveByServiceIdOnDate(
+            + "(sd.effectiveTo IS NULL OR sd.effectiveTo >= :date) "
+            + "ORDER BY sd.effectiveFrom DESC")
+    List<ServiceDuration> findActiveByServiceIdOnDate(
             @Param("serviceId") UUID serviceId, @Param("date") LocalDate date);
 }
