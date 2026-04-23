@@ -63,6 +63,7 @@ const menuItems = {
   ],
   MANAGER: [
     { text: 'Аналитика', icon: <Analytics />, path: '/manager/analytics' },
+    { text: 'Расписание врачей', icon: <CalendarMonth />, path: '/manager/schedules' },
   ],
 };
 

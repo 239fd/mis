@@ -874,8 +874,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
-       '2026-02-02', '2026-02-02 08:00:00', '2026-02-02 08:20:00', FALSE, 'COMPLETED', 'ONLINE', u.id
-FROM patients p, employees e, services s, users u
+       '2026-02-02',
+       '2026-02-02 08:00:00',
+       '2026-02-02 08:20:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
 WHERE p.passport_number = '3456789'
   AND e.last_name = 'Иванов'
   AND e.first_name = 'Алексей'
@@ -888,8 +897,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
-       '2026-02-02', '2026-02-02 08:00:00', '2026-02-02 08:25:00', FALSE, 'COMPLETED', 'ONLINE', u.id
-FROM patients p, employees e, services s, users u
+       '2026-02-02',
+       '2026-02-02 08:00:00',
+       '2026-02-02 08:25:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
 WHERE p.passport_number = '4567890'
   AND e.last_name = 'Кузнецова'
   AND e.first_name = 'Ольга'
@@ -902,8 +920,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 4 LIMIT 1),
-       '2026-02-05', '2026-02-05 09:00:00', '2026-02-05 09:25:00', FALSE, 'COMPLETED', 'PHONE', u_reg.id
-FROM patients p, employees e, services s, users u_reg
+       '2026-02-05',
+       '2026-02-05 09:00:00',
+       '2026-02-05 09:25:00',
+       FALSE,
+       'COMPLETED',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
 WHERE p.passport_number = '5678901'
   AND e.last_name = 'Морозов'
   AND e.first_name = 'Игорь'
@@ -916,8 +943,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 3 LIMIT 1),
-       '2026-02-04', '2026-02-04 08:20:00', '2026-02-04 08:40:00', FALSE, 'COMPLETED', 'WALK_IN', u_reg.id
-FROM patients p, employees e, services s, users u_reg
+       '2026-02-04',
+       '2026-02-04 08:20:00',
+       '2026-02-04 08:40:00',
+       FALSE,
+       'COMPLETED',
+       'WALK_IN',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
 WHERE p.passport_number = '9012345'
   AND e.last_name = 'Иванов'
   AND e.first_name = 'Алексей'
@@ -930,8 +966,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 2 LIMIT 1),
-       '2026-02-10', '2026-02-10 14:00:00', '2026-02-10 14:15:00', TRUE, 'COMPLETED', 'PHONE', u_reg.id
-FROM patients p, employees e, services s, users u_reg
+       '2026-02-10',
+       '2026-02-10 14:00:00',
+       '2026-02-10 14:15:00',
+       TRUE,
+       'COMPLETED',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
 WHERE p.passport_number = '0123456'
   AND e.last_name = 'Кузнецова'
   AND e.first_name = 'Ольга'
@@ -944,8 +989,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 3 LIMIT 1),
-       '2026-02-11', '2026-02-11 10:00:00', '2026-02-11 10:20:00', FALSE, 'COMPLETED', 'ONLINE', u.id
-FROM patients p, employees e, services s, users u
+       '2026-02-11',
+       '2026-02-11 10:00:00',
+       '2026-02-11 10:20:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
 WHERE p.passport_number = '6789012'
   AND e.last_name = 'Волкова'
   AND e.first_name = 'Марина'
@@ -958,8 +1012,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
-       '2026-02-09', '2026-02-09 09:00:00', '2026-02-09 09:30:00', FALSE, 'COMPLETED', 'ONLINE', u.id
-FROM patients p, employees e, services s, users u
+       '2026-02-09',
+       '2026-02-09 09:00:00',
+       '2026-02-09 09:30:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
 WHERE p.passport_number = '7890123'
   AND e.last_name = 'Петрова'
   AND e.first_name = 'Елена'
@@ -972,8 +1035,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 3 LIMIT 1),
-       '2026-02-11', '2026-02-11 08:00:00', '2026-02-11 08:15:00', FALSE, 'COMPLETED', 'ONLINE', u.id
-FROM patients p, employees e, services s, users u
+       '2026-02-11',
+       '2026-02-11 08:00:00',
+       '2026-02-11 08:15:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
 WHERE p.passport_number = '3456789'
   AND e.last_name = 'Иванов'
   AND e.first_name = 'Алексей'
@@ -986,8 +1058,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 3 LIMIT 1),
-       '2026-02-11', '2026-02-11 08:00:00', '2026-02-11 08:15:00', FALSE, 'COMPLETED', 'ONLINE', u.id
-FROM patients p, employees e, services s, users u
+       '2026-02-11',
+       '2026-02-11 08:00:00',
+       '2026-02-11 08:15:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
 WHERE p.passport_number = '4567890'
   AND e.last_name = 'Кузнецова'
   AND e.first_name = 'Ольга'
@@ -1000,8 +1081,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 5 LIMIT 1),
-       '2026-03-06', '2026-03-06 08:30:00', '2026-03-06 08:50:00', FALSE, 'WAITING', 'ONLINE', u.id
-FROM patients p, employees e, services s, users u
+       '2026-03-06',
+       '2026-03-06 08:30:00',
+       '2026-03-06 08:50:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
 WHERE p.passport_number = '8901234'
   AND e.last_name = 'Сидоров'
   AND e.first_name = 'Дмитрий'
@@ -1014,8 +1104,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 5 LIMIT 1),
-       '2026-03-06', '2026-03-06 08:00:00', '2026-03-06 08:20:00', FALSE, 'WAITING', 'ONLINE', u.id
-FROM patients p, employees e, services s, users u
+       '2026-03-06',
+       '2026-03-06 08:00:00',
+       '2026-03-06 08:20:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
 WHERE p.passport_number = '6789012'
   AND e.last_name = 'Иванов'
   AND e.first_name = 'Алексей'
@@ -1028,8 +1127,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 4 LIMIT 1),
-       '2026-03-05', '2026-03-05 09:25:00', '2026-03-05 09:50:00', FALSE, 'WAITING', 'PHONE', u_reg.id
-FROM patients p, employees e, services s, users u_reg
+       '2026-03-05',
+       '2026-03-05 09:25:00',
+       '2026-03-05 09:50:00',
+       FALSE,
+       'WAITING',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
 WHERE p.passport_number = '7890123'
   AND e.last_name = 'Морозов'
   AND e.first_name = 'Игорь'
@@ -1042,8 +1150,18 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 5 LIMIT 1),
-       '2026-02-13', '2026-02-13 08:40:00', '2026-02-13 09:00:00', FALSE, 'CANCELLED', 'ONLINE', u.id, 'Не смогу прийти по личным обстоятельствам'
-FROM patients p, employees e, services s, users u
+       '2026-02-13',
+       '2026-02-13 08:40:00',
+       '2026-02-13 09:00:00',
+       FALSE,
+       'CANCELLED',
+       'ONLINE',
+       u.id,
+       'Не смогу прийти по личным обстоятельствам'
+FROM patients p,
+     employees e,
+     services s,
+     users u
 WHERE p.passport_number = '5678901'
   AND e.last_name = 'Иванов'
   AND e.first_name = 'Алексей'
@@ -1056,8 +1174,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 2 LIMIT 1),
-       '2026-02-17', '2026-02-17 09:30:00', '2026-02-17 10:00:00', FALSE, 'NO_SHOW', 'WALK_IN', u_reg.id
-FROM patients p, employees e, services s, users u_reg
+       '2026-02-17',
+       '2026-02-17 09:30:00',
+       '2026-02-17 10:00:00',
+       FALSE,
+       'NO_SHOW',
+       'WALK_IN',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
 WHERE p.passport_number = '9012345'
   AND e.last_name = 'Петрова'
   AND e.first_name = 'Елена'
@@ -1070,8 +1197,17 @@ SELECT p.id,
        e.id,
        s.id,
        (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
-       '2026-03-02', '2026-03-02 10:20:00', '2026-03-02 10:40:00', FALSE, 'WAITING', 'PHONE', u_reg.id
-FROM patients p, employees e, services s, users u_reg
+       '2026-03-02',
+       '2026-03-02 10:20:00',
+       '2026-03-02 10:40:00',
+       FALSE,
+       'WAITING',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
 WHERE p.passport_number = '0123456'
   AND e.last_name = 'Волкова'
   AND e.first_name = 'Марина'
@@ -1153,3 +1289,1372 @@ FROM appointments a
 WHERE p.passport_number = '9012345'
   AND e.last_name = 'Петрова'
   AND a.status = 'NO_SHOW';
+
+-- ============================================================
+-- Дополнительный набор тестовых данных: май-июнь 2026
+-- ============================================================
+
+-- Новые пользователи-пациенты
+INSERT INTO users (login, password_hash, email, phone, is_active, role_id)
+SELECT 'titova.pat',
+       '$2a$10$24yI.EqeKqP0yDquf3r.e.NkFjf7dnkF6aFMDmZMKAH/W4GuuRlnW',
+       'titova@mail.by',
+       '+375294444446',
+       TRUE,
+       r.id
+FROM roles r
+WHERE r.name = 'PATIENT';
+
+INSERT INTO users (login, password_hash, email, phone, is_active, role_id)
+SELECT 'makarov.pat',
+       '$2a$10$24yI.EqeKqP0yDquf3r.e.NkFjf7dnkF6aFMDmZMKAH/W4GuuRlnW',
+       'makarov@mail.by',
+       '+375294444447',
+       TRUE,
+       r.id
+FROM roles r
+WHERE r.name = 'PATIENT';
+
+INSERT INTO users (login, password_hash, email, phone, is_active, role_id)
+SELECT 'grigoriev.pat',
+       '$2a$10$24yI.EqeKqP0yDquf3r.e.NkFjf7dnkF6aFMDmZMKAH/W4GuuRlnW',
+       'grigoriev@mail.by',
+       '+375294444448',
+       TRUE,
+       r.id
+FROM roles r
+WHERE r.name = 'PATIENT';
+
+INSERT INTO users (login, password_hash, email, phone, is_active, role_id)
+SELECT 'vasilieva.pat',
+       '$2a$10$24yI.EqeKqP0yDquf3r.e.NkFjf7dnkF6aFMDmZMKAH/W4GuuRlnW',
+       'vasilieva@mail.by',
+       '+375294444449',
+       TRUE,
+       r.id
+FROM roles r
+WHERE r.name = 'PATIENT';
+
+-- Новые пациенты
+INSERT INTO patients (last_name, first_name, middle_name, gender, birth_date, passport_series, passport_number, phone,
+                      email, address)
+VALUES ('Титова', 'Екатерина', 'Викторовна', 'FEMALE', '1992-06-18', 'MP', '1122334', '+375294444446',
+        'titova@mail.by', 'г. Минск, ул. Притыцкого, д. 12, кв. 5');
+
+INSERT INTO patients (last_name, first_name, middle_name, gender, birth_date, passport_series, passport_number, phone,
+                      email, address)
+VALUES ('Макаров', 'Сергей', 'Павлович', 'MALE', '1975-10-04', 'MP', '2233445', '+375294444447',
+        'makarov@mail.by', 'г. Минск, ул. Каховская, д. 34, кв. 18');
+
+INSERT INTO patients (last_name, first_name, middle_name, gender, birth_date, passport_series, passport_number, phone,
+                      email, address)
+VALUES ('Григорьев', 'Андрей', 'Владимирович', 'MALE', '1983-03-27', 'MP', '3344556', '+375294444448',
+        'grigoriev@mail.by', 'г. Минск, пр. Дзержинского, д. 89, кв. 46');
+
+INSERT INTO patients (last_name, first_name, middle_name, gender, birth_date, passport_series, passport_number, phone,
+                      email, address)
+VALUES ('Васильева', 'Ольга', 'Николаевна', 'FEMALE', '1968-12-09', 'MP', '4455667', '+375294444449',
+        'vasilieva@mail.by', 'г. Минск, ул. Куйбышева, д. 22, кв. 11');
+
+INSERT INTO patients (last_name, first_name, middle_name, gender, birth_date, passport_series, passport_number, phone,
+                      email, address)
+VALUES ('Макарова', 'Анна', 'Сергеевна', 'FEMALE', '2015-08-15', 'MP', '5566778', NULL, NULL,
+        'г. Минск, ул. Каховская, д. 34, кв. 18');
+
+INSERT INTO patients (last_name, first_name, middle_name, gender, birth_date, passport_series, passport_number, phone,
+                      email, address)
+VALUES ('Григорьев', 'Иван', 'Андреевич', 'MALE', '2020-01-22', 'MP', '6677889', NULL, NULL,
+        'г. Минск, пр. Дзержинского, д. 89, кв. 46');
+
+INSERT INTO patients (last_name, first_name, middle_name, gender, birth_date, passport_series, passport_number, phone,
+                      email, address)
+VALUES ('Степанов', 'Константин', 'Юрьевич', 'MALE', '1955-02-11', 'MP', '7788990', '+375291234568', NULL,
+        'г. Минск, ул. Есенина, д. 45, кв. 78');
+
+INSERT INTO patients (last_name, first_name, middle_name, gender, birth_date, passport_series, passport_number, phone,
+                      email, address)
+VALUES ('Дмитриева', 'Людмила', 'Павловна', 'FEMALE', '1958-05-03', 'MP', '8899001', '+375291234569', NULL,
+        'г. Минск, ул. Кальварийская, д. 16, кв. 22');
+
+-- Привязки пациент-пользователь
+INSERT INTO user_patients (user_id, patient_id, relationship)
+SELECT u.id, p.id, 'SELF'
+FROM users u,
+     patients p
+WHERE u.login = 'titova.pat'
+  AND p.passport_series = 'MP'
+  AND p.passport_number = '1122334';
+
+INSERT INTO user_patients (user_id, patient_id, relationship)
+SELECT u.id, p.id, 'SELF'
+FROM users u,
+     patients p
+WHERE u.login = 'makarov.pat'
+  AND p.passport_series = 'MP'
+  AND p.passport_number = '2233445';
+
+INSERT INTO user_patients (user_id, patient_id, relationship)
+SELECT u.id, p.id, 'CHILD'
+FROM users u,
+     patients p
+WHERE u.login = 'makarov.pat'
+  AND p.passport_series = 'MP'
+  AND p.passport_number = '5566778';
+
+INSERT INTO user_patients (user_id, patient_id, relationship)
+SELECT u.id, p.id, 'SELF'
+FROM users u,
+     patients p
+WHERE u.login = 'grigoriev.pat'
+  AND p.passport_series = 'MP'
+  AND p.passport_number = '3344556';
+
+INSERT INTO user_patients (user_id, patient_id, relationship)
+SELECT u.id, p.id, 'CHILD'
+FROM users u,
+     patients p
+WHERE u.login = 'grigoriev.pat'
+  AND p.passport_series = 'MP'
+  AND p.passport_number = '6677889';
+
+INSERT INTO user_patients (user_id, patient_id, relationship)
+SELECT u.id, p.id, 'SELF'
+FROM users u,
+     patients p
+WHERE u.login = 'vasilieva.pat'
+  AND p.passport_series = 'MP'
+  AND p.passport_number = '4455667';
+
+-- Исключения расписания
+INSERT INTO schedule_exceptions (employee_id, exception_type, date_from, date_to, reason, created_by)
+SELECT e.id, 'SICK_LEAVE', '2026-05-18', '2026-05-20', 'Больничный лист', u.id
+FROM employees e,
+     users u
+WHERE e.last_name = 'Кузнецова'
+  AND e.first_name = 'Ольга'
+  AND u.login = 'smirnova.reg';
+
+INSERT INTO schedule_exceptions (employee_id, exception_type, date_from, date_to, reason, created_by)
+SELECT e.id, 'VACATION', '2026-05-25', '2026-06-05', 'Ежегодный трудовой отпуск', u.id
+FROM employees e,
+     users u
+WHERE e.last_name = 'Волкова'
+  AND e.first_name = 'Марина'
+  AND u.login = 'fedorov.mgr';
+
+INSERT INTO schedule_exceptions (employee_id, exception_type, date_from, date_to, reason, created_by)
+SELECT e.id, 'DAY_OFF', '2026-05-08', '2026-05-08', 'Отгул по семейным обстоятельствам', u.id
+FROM employees e,
+     users u
+WHERE e.last_name = 'Морозов'
+  AND e.first_name = 'Игорь'
+  AND u.login = 'fedorov.mgr';
+
+-- =========================
+-- ПРИЁМЫ: неделя 4-8 мая 2026 (COMPLETED / CANCELLED / NO_SHOW)
+-- =========================
+
+-- 2026-05-04 Пн
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-05-04',
+       '2026-05-04 08:00:00',
+       '2026-05-04 08:20:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '3456789'
+  AND e.last_name = 'Иванов'
+  AND e.first_name = 'Алексей'
+  AND s.name = 'Приём терапевта первичный'
+  AND u.login = 'novikov.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-05-04',
+       '2026-05-04 09:00:00',
+       '2026-05-04 09:25:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '4567890'
+  AND e.last_name = 'Кузнецова'
+  AND e.first_name = 'Ольга'
+  AND s.name = 'Приём кардиолога'
+  AND u.login = 'sokolova.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-05-04',
+       '2026-05-04 10:00:00',
+       '2026-05-04 10:20:00',
+       FALSE,
+       'COMPLETED',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
+WHERE p.passport_number = '6789012'
+  AND e.last_name = 'Волкова'
+  AND e.first_name = 'Марина'
+  AND s.name = 'Приём ЛОР'
+  AND u_reg.login = 'smirnova.reg';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by, cancel_reason)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-05-04',
+       '2026-05-04 11:00:00',
+       '2026-05-04 11:30:00',
+       FALSE,
+       'CANCELLED',
+       'PHONE',
+       u_reg.id,
+       'Пациент перенёс на следующую неделю'
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
+WHERE p.passport_number = '9012345'
+  AND e.last_name = 'Петрова'
+  AND e.first_name = 'Елена'
+  AND s.name = 'Приём хирурга первичный'
+  AND u_reg.login = 'kozlova.reg';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-05-04',
+       '2026-05-04 08:30:00',
+       '2026-05-04 08:50:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '1122334'
+  AND e.last_name = 'Сидоров'
+  AND e.first_name = 'Дмитрий'
+  AND s.name = 'Приём офтальмолога'
+  AND u.login = 'titova.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-05-04',
+       '2026-05-04 14:00:00',
+       '2026-05-04 14:15:00',
+       TRUE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '7890123'
+  AND e.last_name = 'Иванов'
+  AND e.first_name = 'Алексей'
+  AND s.name = 'Приём терапевта повторный'
+  AND u.login = 'orlov.pat';
+
+-- 2026-05-05 Вт
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 2 LIMIT 1),
+       '2026-05-05',
+       '2026-05-05 09:00:00',
+       '2026-05-05 09:15:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '2233445'
+  AND e.last_name = 'Морозов'
+  AND e.first_name = 'Игорь'
+  AND s.name = 'Приём невролога'
+  AND u.login = 'makarov.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 2 LIMIT 1),
+       '2026-05-05',
+       '2026-05-05 14:00:00',
+       '2026-05-05 14:20:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '5678901'
+  AND e.last_name = 'Иванов'
+  AND e.first_name = 'Алексей'
+  AND s.name = 'Приём терапевта первичный'
+  AND u.login = 'lebedev.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 2 LIMIT 1),
+       '2026-05-05',
+       '2026-05-05 10:00:00',
+       '2026-05-05 10:30:00',
+       FALSE,
+       'NO_SHOW',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
+WHERE p.passport_number = '3344556'
+  AND e.last_name = 'Петрова'
+  AND e.first_name = 'Елена'
+  AND s.name = 'Приём хирурга первичный'
+  AND u_reg.login = 'smirnova.reg';
+
+-- 2026-05-06 Ср
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 3 LIMIT 1),
+       '2026-05-06',
+       '2026-05-06 10:20:00',
+       '2026-05-06 10:40:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '7890123'
+  AND e.last_name = 'Волкова'
+  AND e.first_name = 'Марина'
+  AND s.name = 'Приём ЛОР'
+  AND u.login = 'orlov.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 3 LIMIT 1),
+       '2026-05-06',
+       '2026-05-06 09:00:00',
+       '2026-05-06 09:15:00',
+       FALSE,
+       'COMPLETED',
+       'WALK_IN',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
+WHERE p.passport_number = '0123456'
+  AND e.last_name = 'Кузнецова'
+  AND e.first_name = 'Ольга'
+  AND s.name = 'ЭКГ'
+  AND u_reg.login = 'kozlova.reg';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 3 LIMIT 1),
+       '2026-05-06',
+       '2026-05-06 08:30:00',
+       '2026-05-06 08:50:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '4455667'
+  AND e.last_name = 'Сидоров'
+  AND e.first_name = 'Дмитрий'
+  AND s.name = 'Приём офтальмолога'
+  AND u.login = 'vasilieva.pat';
+
+-- 2026-05-07 Чт
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 4 LIMIT 1),
+       '2026-05-07',
+       '2026-05-07 09:00:00',
+       '2026-05-07 09:15:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '8901234'
+  AND e.last_name = 'Морозов'
+  AND e.first_name = 'Игорь'
+  AND s.name = 'Приём невролога'
+  AND u.login = 'novikov.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 4 LIMIT 1),
+       '2026-05-07',
+       '2026-05-07 10:00:00',
+       '2026-05-07 10:25:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '4567890'
+  AND e.last_name = 'Кузнецова'
+  AND e.first_name = 'Ольга'
+  AND s.name = 'Приём кардиолога'
+  AND u.login = 'sokolova.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 4 LIMIT 1),
+       '2026-05-07',
+       '2026-05-07 11:00:00',
+       '2026-05-07 11:30:00',
+       FALSE,
+       'COMPLETED',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
+WHERE p.passport_number = '7788990'
+  AND e.last_name = 'Петрова'
+  AND e.first_name = 'Елена'
+  AND s.name = 'Приём хирурга первичный'
+  AND u_reg.login = 'smirnova.reg';
+
+-- 2026-05-08 Пт (Морозов в отгуле)
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 5 LIMIT 1),
+       '2026-05-08',
+       '2026-05-08 08:00:00',
+       '2026-05-08 08:15:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '6789012'
+  AND e.last_name = 'Иванов'
+  AND e.first_name = 'Алексей'
+  AND s.name = 'Приём терапевта повторный'
+  AND u.login = 'komarova.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by, cancel_reason)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 5 LIMIT 1),
+       '2026-05-08',
+       '2026-05-08 08:30:00',
+       '2026-05-08 08:50:00',
+       FALSE,
+       'CANCELLED',
+       'ONLINE',
+       u.id,
+       'Ребёнок заболел, перенесу позже'
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '5566778'
+  AND e.last_name = 'Сидоров'
+  AND e.first_name = 'Дмитрий'
+  AND s.name = 'Приём офтальмолога'
+  AND u.login = 'makarov.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 5 LIMIT 1),
+       '2026-05-08',
+       '2026-05-08 10:00:00',
+       '2026-05-08 10:20:00',
+       FALSE,
+       'NO_SHOW',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
+WHERE p.passport_number = '5678901'
+  AND e.last_name = 'Волкова'
+  AND e.first_name = 'Марина'
+  AND s.name = 'Приём ЛОР'
+  AND u_reg.login = 'kozlova.reg';
+
+-- =========================
+-- ПРИЁМЫ: неделя 11-15 мая 2026 (WAITING)
+-- =========================
+
+-- 2026-05-11 Пн
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-05-11',
+       '2026-05-11 08:00:00',
+       '2026-05-11 08:25:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '1122334'
+  AND e.last_name = 'Кузнецова'
+  AND e.first_name = 'Ольга'
+  AND s.name = 'Приём кардиолога'
+  AND u.login = 'titova.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-05-11',
+       '2026-05-11 09:00:00',
+       '2026-05-11 09:20:00',
+       FALSE,
+       'WAITING',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
+WHERE p.passport_number = '9012345'
+  AND e.last_name = 'Иванов'
+  AND e.first_name = 'Алексей'
+  AND s.name = 'Приём терапевта первичный'
+  AND u_reg.login = 'kozlova.reg';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-05-11',
+       '2026-05-11 10:20:00',
+       '2026-05-11 10:40:00',
+       FALSE,
+       'WAITING',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
+WHERE p.passport_number = '8899001'
+  AND e.last_name = 'Волкова'
+  AND e.first_name = 'Марина'
+  AND s.name = 'Приём ЛОР'
+  AND u_reg.login = 'smirnova.reg';
+
+-- 2026-05-12 Вт
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 2 LIMIT 1),
+       '2026-05-12',
+       '2026-05-12 09:00:00',
+       '2026-05-12 09:30:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '3344556'
+  AND e.last_name = 'Петрова'
+  AND e.first_name = 'Елена'
+  AND s.name = 'Приём хирурга первичный'
+  AND u.login = 'grigoriev.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 2 LIMIT 1),
+       '2026-05-12',
+       '2026-05-12 10:00:00',
+       '2026-05-12 10:15:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '2233445'
+  AND e.last_name = 'Морозов'
+  AND e.first_name = 'Игорь'
+  AND s.name = 'Приём невролога'
+  AND u.login = 'makarov.pat';
+
+-- 2026-05-13 Ср
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 3 LIMIT 1),
+       '2026-05-13',
+       '2026-05-13 11:00:00',
+       '2026-05-13 11:20:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '4455667'
+  AND e.last_name = 'Волкова'
+  AND e.first_name = 'Марина'
+  AND s.name = 'Приём ЛОР'
+  AND u.login = 'vasilieva.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 3 LIMIT 1),
+       '2026-05-13',
+       '2026-05-13 08:30:00',
+       '2026-05-13 08:50:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '3456789'
+  AND e.last_name = 'Сидоров'
+  AND e.first_name = 'Дмитрий'
+  AND s.name = 'Приём офтальмолога'
+  AND u.login = 'novikov.pat';
+
+-- 2026-05-14 Чт
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 4 LIMIT 1),
+       '2026-05-14',
+       '2026-05-14 09:15:00',
+       '2026-05-14 09:30:00',
+       FALSE,
+       'WAITING',
+       'WALK_IN',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
+WHERE p.passport_number = '7788990'
+  AND e.last_name = 'Морозов'
+  AND e.first_name = 'Игорь'
+  AND s.name = 'Приём невролога'
+  AND u_reg.login = 'smirnova.reg';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 4 LIMIT 1),
+       '2026-05-14',
+       '2026-05-14 10:00:00',
+       '2026-05-14 10:15:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '7890123'
+  AND e.last_name = 'Кузнецова'
+  AND e.first_name = 'Ольга'
+  AND s.name = 'ЭКГ'
+  AND u.login = 'orlov.pat';
+
+-- 2026-05-15 Пт
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 5 LIMIT 1),
+       '2026-05-15',
+       '2026-05-15 08:15:00',
+       '2026-05-15 08:30:00',
+       FALSE,
+       'WAITING',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
+WHERE p.passport_number = '0123456'
+  AND e.last_name = 'Иванов'
+  AND e.first_name = 'Алексей'
+  AND s.name = 'Приём терапевта повторный'
+  AND u_reg.login = 'kozlova.reg';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 5 LIMIT 1),
+       '2026-05-15',
+       '2026-05-15 11:00:00',
+       '2026-05-15 11:20:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '6677889'
+  AND e.last_name = 'Волкова'
+  AND e.first_name = 'Марина'
+  AND s.name = 'Приём ЛОР'
+  AND u.login = 'grigoriev.pat';
+
+-- =========================
+-- ПРИЁМЫ: 19-22 мая 2026 (Кузнецова на больничном 18-20)
+-- =========================
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 2 LIMIT 1),
+       '2026-05-19',
+       '2026-05-19 15:00:00',
+       '2026-05-19 15:15:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '5678901'
+  AND e.last_name = 'Иванов'
+  AND e.first_name = 'Алексей'
+  AND s.name = 'Приём терапевта повторный'
+  AND u.login = 'lebedev.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 4 LIMIT 1),
+       '2026-05-21',
+       '2026-05-21 08:30:00',
+       '2026-05-21 08:45:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '6789012'
+  AND e.last_name = 'Кузнецова'
+  AND e.first_name = 'Ольга'
+  AND s.name = 'ЭКГ'
+  AND u.login = 'komarova.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 5 LIMIT 1),
+       '2026-05-22',
+       '2026-05-22 14:00:00',
+       '2026-05-22 14:20:00',
+       TRUE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '4567890'
+  AND e.last_name = 'Иванов'
+  AND e.first_name = 'Алексей'
+  AND s.name = 'Приём терапевта повторный'
+  AND u.login = 'sokolova.pat';
+
+-- =========================
+-- ПРИЁМЫ: июнь 2026
+-- =========================
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-06-01',
+       '2026-06-01 08:00:00',
+       '2026-06-01 08:20:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '3456789'
+  AND e.last_name = 'Иванов'
+  AND e.first_name = 'Алексей'
+  AND s.name = 'Приём терапевта первичный'
+  AND u.login = 'novikov.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 2 LIMIT 1),
+       '2026-06-02',
+       '2026-06-02 09:00:00',
+       '2026-06-02 09:30:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '3344556'
+  AND e.last_name = 'Петрова'
+  AND e.first_name = 'Елена'
+  AND s.name = 'Приём хирурга первичный'
+  AND u.login = 'grigoriev.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-06-08',
+       '2026-06-08 10:00:00',
+       '2026-06-08 10:20:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '1122334'
+  AND e.last_name = 'Волкова'
+  AND e.first_name = 'Марина'
+  AND s.name = 'Приём ЛОР'
+  AND u.login = 'titova.pat';
+
+-- =========================
+-- ИСТОРИЯ СТАТУСОВ
+-- =========================
+
+-- Новиков → Иванов 2026-05-04 (WAITING → IN_PROGRESS → COMPLETED)
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, NULL, 'WAITING', u.id, 'Запись создана пациентом онлайн', '2026-04-28 14:30:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users u ON u.login = 'novikov.pat'
+WHERE p.passport_number = '3456789'
+  AND e.last_name = 'Иванов'
+  AND a.appointment_date = '2026-05-04'
+  AND a.start_time = '2026-05-04 08:00:00';
+
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, 'WAITING', 'IN_PROGRESS', u.id, 'Пациент на приёме', '2026-05-04 08:02:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users u ON u.login = 'ivanov.doc'
+WHERE p.passport_number = '3456789'
+  AND e.last_name = 'Иванов'
+  AND a.appointment_date = '2026-05-04'
+  AND a.start_time = '2026-05-04 08:00:00';
+
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, 'IN_PROGRESS', 'COMPLETED', u.id, 'Приём завершён', '2026-05-04 08:18:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users u ON u.login = 'ivanov.doc'
+WHERE p.passport_number = '3456789'
+  AND e.last_name = 'Иванов'
+  AND a.appointment_date = '2026-05-04'
+  AND a.start_time = '2026-05-04 08:00:00';
+
+-- Жуковский → Петрова 2026-05-04 (CANCELLED)
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, NULL, 'WAITING', u.id, 'Запись создана регистратурой', '2026-04-29 09:15:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users u ON u.login = 'kozlova.reg'
+WHERE p.passport_number = '9012345'
+  AND e.last_name = 'Петрова'
+  AND a.appointment_date = '2026-05-04'
+  AND a.status = 'CANCELLED';
+
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, 'WAITING', 'CANCELLED', u.id, 'Пациент перенёс запись', '2026-05-03 17:00:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users u ON u.login = 'kozlova.reg'
+WHERE p.passport_number = '9012345'
+  AND e.last_name = 'Петрова'
+  AND a.appointment_date = '2026-05-04'
+  AND a.status = 'CANCELLED';
+
+-- Григорьев → Петрова 2026-05-05 (NO_SHOW)
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, NULL, 'WAITING', u.id, 'Запись создана регистратурой', '2026-05-01 11:00:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users u ON u.login = 'smirnova.reg'
+WHERE p.passport_number = '3344556'
+  AND e.last_name = 'Петрова'
+  AND a.appointment_date = '2026-05-05'
+  AND a.status = 'NO_SHOW';
+
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, 'WAITING', 'NO_SHOW', u.id, 'Пациент не явился на приём', '2026-05-05 10:10:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users u ON u.login = 'petrova.doc'
+WHERE p.passport_number = '3344556'
+  AND e.last_name = 'Петрова'
+  AND a.appointment_date = '2026-05-05'
+  AND a.status = 'NO_SHOW';
+
+-- Лебедев → Волкова 2026-05-08 (NO_SHOW)
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, NULL, 'WAITING', u.id, 'Запись создана по телефону', '2026-05-03 14:00:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users u ON u.login = 'kozlova.reg'
+WHERE p.passport_number = '5678901'
+  AND e.last_name = 'Волкова'
+  AND a.appointment_date = '2026-05-08'
+  AND a.status = 'NO_SHOW';
+
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, 'WAITING', 'NO_SHOW', u.id, 'Пациент не явился', '2026-05-08 10:20:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users u ON u.login = 'volkova.doc'
+WHERE p.passport_number = '5678901'
+  AND e.last_name = 'Волкова'
+  AND a.appointment_date = '2026-05-08'
+  AND a.status = 'NO_SHOW';
+
+-- Титова → Сидоров 2026-05-04 (COMPLETED)
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, NULL, 'WAITING', u.id, 'Запись создана пациентом онлайн', '2026-04-30 10:20:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users u ON u.login = 'titova.pat'
+WHERE p.passport_number = '1122334'
+  AND e.last_name = 'Сидоров'
+  AND a.appointment_date = '2026-05-04';
+
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, 'WAITING', 'IN_PROGRESS', u.id, 'Пациент на приёме', '2026-05-04 08:31:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users u ON u.login = 'sidorov.doc'
+WHERE p.passport_number = '1122334'
+  AND e.last_name = 'Сидоров'
+  AND a.appointment_date = '2026-05-04';
+
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, 'IN_PROGRESS', 'COMPLETED', u.id, 'Приём завершён', '2026-05-04 08:49:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users u ON u.login = 'sidorov.doc'
+WHERE p.passport_number = '1122334'
+  AND e.last_name = 'Сидоров'
+  AND a.appointment_date = '2026-05-04';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-05-04',
+       '2026-05-04 12:00:00',
+       '2026-05-04 12:20:00',
+       FALSE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '5678901'
+  AND e.last_name = 'Иванов'
+  AND e.first_name = 'Алексей'
+  AND s.name = 'Приём терапевта первичный'
+  AND u.login = 'lebedev.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 2 LIMIT 1),
+       '2026-05-05',
+       '2026-05-05 11:00:00',
+       '2026-05-05 11:20:00',
+       FALSE,
+       'COMPLETED',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
+WHERE p.passport_number = '8901234'
+  AND e.last_name = 'Волкова'
+  AND e.first_name = 'Марина'
+  AND s.name = 'Приём ЛОР'
+  AND u_reg.login = 'smirnova.reg';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 3 LIMIT 1),
+       '2026-05-06',
+       '2026-05-06 14:00:00',
+       '2026-05-06 14:15:00',
+       TRUE,
+       'COMPLETED',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '2233445'
+  AND e.last_name = 'Иванов'
+  AND e.first_name = 'Алексей'
+  AND s.name = 'Приём терапевта повторный'
+  AND u.login = 'makarov.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 4 LIMIT 1),
+       '2026-05-07',
+       '2026-05-07 08:00:00',
+       '2026-05-07 08:30:00',
+       FALSE,
+       'NO_SHOW',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
+WHERE p.passport_number = '5566778'
+  AND e.last_name = 'Петрова'
+  AND e.first_name = 'Елена'
+  AND s.name = 'Приём хирурга первичный'
+  AND u_reg.login = 'kozlova.reg';
+
+-- Больше записей на 11-15 мая (ожидающие / завершенные)
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-05-11',
+       '2026-05-11 11:00:00',
+       '2026-05-11 11:20:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '5678901'
+  AND e.last_name = 'Волкова'
+  AND e.first_name = 'Марина'
+  AND s.name = 'Приём ЛОР'
+  AND u.login = 'lebedev.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 3 LIMIT 1),
+       '2026-05-13',
+       '2026-05-13 09:30:00',
+       '2026-05-13 09:50:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '6677889'
+  AND e.last_name = 'Сидоров'
+  AND e.first_name = 'Дмитрий'
+  AND s.name = 'Приём офтальмолога'
+  AND u.login = 'grigoriev.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 5 LIMIT 1),
+       '2026-05-15',
+       '2026-05-15 14:00:00',
+       '2026-05-15 14:15:00',
+       TRUE,
+       'WAITING',
+       'PHONE',
+       u_reg.id
+FROM patients p,
+     employees e,
+     services s,
+     users u_reg
+WHERE p.passport_number = '3344556'
+  AND e.last_name = 'Иванов'
+  AND e.first_name = 'Алексей'
+  AND s.name = 'Приём терапевта повторный'
+  AND u_reg.login = 'smirnova.reg';
+
+-- Записи на конец мая
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 1 LIMIT 1),
+       '2026-05-25',
+       '2026-05-25 09:00:00',
+       '2026-05-25 09:20:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '4455667'
+  AND e.last_name = 'Иванов'
+  AND e.first_name = 'Алексей'
+  AND s.name = 'Приём терапевта первичный'
+  AND u.login = 'vasilieva.pat';
+
+INSERT INTO appointments (patient_id, employee_id, service_id, schedule_id, appointment_date, start_time, end_time,
+                          is_paid, status, source, created_by)
+SELECT p.id,
+       e.id,
+       s.id,
+       (SELECT ds.id FROM doctor_schedules ds WHERE ds.employee_id = e.id AND ds.day_of_week = 2 LIMIT 1),
+       '2026-05-26',
+       '2026-05-26 10:00:00',
+       '2026-05-26 10:25:00',
+       FALSE,
+       'WAITING',
+       'ONLINE',
+       u.id
+FROM patients p,
+     employees e,
+     services s,
+     users u
+WHERE p.passport_number = '1122334'
+  AND e.last_name = 'Кузнецова'
+  AND e.first_name = 'Ольга'
+  AND s.name = 'Приём кардиолога'
+  AND u.login = 'titova.pat';
+
+-- История статусов для новых completed приемов
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, NULL, 'WAITING', u.id, 'Создано', '2026-05-02 10:00:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN users u ON u.login = 'lebedev.pat'
+WHERE p.passport_number = '5678901'
+  AND a.appointment_date = '2026-05-04'
+  AND a.start_time = '2026-05-04 12:00:00';
+
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, 'WAITING', 'IN_PROGRESS', e_u.id, 'На приеме', '2026-05-04 12:05:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users e_u ON e.user_id = e_u.id
+WHERE p.passport_number = '5678901'
+  AND a.appointment_date = '2026-05-04'
+  AND a.start_time = '2026-05-04 12:00:00';
+
+INSERT INTO appointment_status_history (appointment_id, old_status, new_status, changed_by, change_reason, created_at)
+SELECT a.id, 'IN_PROGRESS', 'COMPLETED', e_u.id, 'Завершено', '2026-05-04 12:18:00'
+FROM appointments a
+         JOIN patients p ON a.patient_id = p.id
+         JOIN employees e ON a.employee_id = e.id
+         JOIN users e_u ON e.user_id = e_u.id
+WHERE p.passport_number = '5678901'
+  AND a.appointment_date = '2026-05-04'
+  AND a.start_time = '2026-05-04 12:00:00';
+

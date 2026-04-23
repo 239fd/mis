@@ -46,6 +46,7 @@ import {AffectedAppointmentsPage} from '../pages/receptionist/AffectedAppointmen
 
 // Manager pages
 import {AnalyticsPage} from '../pages/manager/AnalyticsPage';
+import {ManagerSchedulesPage} from '../pages/manager/SchedulesPage';
 
 // Unauthorized page
 import {UnauthorizedPage} from '../pages/UnauthorizedPage';
@@ -305,6 +306,14 @@ export const AppRoutes = () => {
                     element={
                         <RoleRoute allowedRoles={['MANAGER']}>
                             <AnalyticsPage/>
+                        </RoleRoute>
+                    }
+                />
+                <Route
+                    path="/manager/schedules"
+                    element={
+                        <RoleRoute allowedRoles={['MANAGER']}>
+                            <ManagerSchedulesPage/>
                         </RoleRoute>
                     }
                 />
